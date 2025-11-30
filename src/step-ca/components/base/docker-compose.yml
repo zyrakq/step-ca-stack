@@ -1,0 +1,41 @@
+services:
+  step-ca-management:
+    container_name: step-ca-management
+    image: smallstep/step-ca:latest
+    restart: unless-stopped
+    environment:
+      DOCKER_STEPCA_INIT_NAME: ${DOCKER_STEPCA_INIT_NAME:-"Step CA"}
+      DOCKER_STEPCA_INIT_DNS_NAMES: ${DOCKER_STEPCA_INIT_DNS_NAMES:-localhost}
+      DOCKER_STEPCA_INIT_PASSWORD_FILE: ${DOCKER_STEPCA_INIT_PASSWORD_FILE:-/run/secrets/passwd}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: 3
+    healthcheck:
+      test: ["CMD", "step", "ca", "health", "--ca-url=https://localhost:9000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    configs:
+      - source: step-ca-management-passwd
+        target: ${DOCKER_STEPCA_INIT_PASSWORD_FILE:-/run/secrets/passwd}
+    volumes:
+      - step-ca-management-data:/home/step
+    networks:
+      - step-ca-management-network
+
+configs:
+  step-ca-management-passwd:
+    content: |
+      ${DOCKER_STEPCA_INIT_PASSWORD}
+
+volumes:
+  step-ca-management-data:
+    name: step-ca-management-data
+    driver: local
+
+networks:
+  step-ca-management-network:
+    name: step-ca-management-network

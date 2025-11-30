@@ -1,0 +1,8 @@
+services:
+  step-ca-management:
+    networks:
+      - step-ca-managmen-workspace-network
+
+networks:
+  step-ca-managmen-workspace-network:
+    external: true
