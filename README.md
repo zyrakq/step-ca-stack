@@ -1,6 +1,6 @@
 # 🐳 Step CA Docker Stack
 
-This project contains Docker configurations and compose files for running Smallstep Step CA (Certificate Authority) and related services.
+This project contains Docker configurations and compose files for running Smallstep Step CA (Certificate Authority) and related services with web-based management interface.
 
 ## 🧩 Components
 
@@ -9,6 +9,12 @@ This project contains Docker configurations and compose files for running Smalls
 Smallstep Step CA — a private Certificate Authority for issuing and managing X.509 certificates. Provides automated certificate management through CLI and API interfaces.
 
 [Learn more about Step CA configuration](src/step-ca/README.md).
+
+### [🖥️ Step UI Web Interface](src/webui/step-ui)
+
+Step UI — a web-based management interface for Smallstep Step CA. Provides an intuitive dashboard for certificate lifecycle management, monitoring provisioners, and administration tasks.
+
+[Learn more about Step UI configuration](src/webui/step-ui/README.md).
 
 ## 🚀 Getting Started
 
@@ -25,19 +31,10 @@ Each service directory contains:
 
 ```sh
 ├── src/
-│   └── step-ca/              # Step CA Certificate Authority
-│       ├── components/       # Source Docker Compose components
-│       │   ├── base/        # Core Step CA service
-│       │   └── environments/ # Environment configurations
-│       └── build/           # Generated configurations (via stackbuilder)
-│           ├── devcontainer/ # VS Code Dev Containers environment
-│           ├── forwarding/   # Local access with port forwarding
-│           └── internal/     # Internal Docker network deployment
+│   ├── step-ca/              # Step CA Certificate Authority
+│   └── webui/               # Web-based management interfaces
+│       └── step-ui/         # Step UI web interface (submodule)
 ```
-
-## 🔮 Future Plans
-
-This project will be extended with GUI management interfaces as submodules to provide web-based certificate management capabilities.
 
 ## 📄 License
 

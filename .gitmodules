@@ -1,0 +1,3 @@
+[submodule "src/webui/step-ui"]
+	path = src/webui/step-ui
+	url = https://github.com/zyrakq/step-ui-stack.git
