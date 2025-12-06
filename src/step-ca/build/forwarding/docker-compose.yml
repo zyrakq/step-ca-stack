@@ -27,7 +27,7 @@ services:
     networks:
       - step-ca-management-network
     ports:
-      - "9000:9000"
+      - ${PORT:-9000}:9000
 configs:
   step-ca-management-passwd:
     content: |

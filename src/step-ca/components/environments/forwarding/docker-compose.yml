@@ -1,4 +1,4 @@
 services:
   step-ca-management:
     ports:
-      - "9000:9000"
+      - ${PORT:-9000}:9000
