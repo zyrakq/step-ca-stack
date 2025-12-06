@@ -136,6 +136,7 @@ The original Step CA project source code is available at: [https://github.com/sm
 
 ## 📚 Additional Resources
 
+- [Step CLI Reference Guide](CLI-REFERENCE.md) - Common CLI commands and operations
 - [Step CA Documentation](https://smallstep.com/docs/step-ca)
 - [Step CLI Documentation](https://smallstep.com/docs/step-cli)
 - [Certificate Management Best Practices](https://smallstep.com/docs/tutorials)
